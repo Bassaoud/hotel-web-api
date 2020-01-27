@@ -52,13 +52,14 @@ public class ReservationController {
 	@RequestMapping(method = RequestMethod.GET, path = "reservations")
 	public List<Reservation> listeReservations() {
 		LOG.info("Voici les reservations");
-		return reservationRepository.findAll();
+		return this.reservationRepository.findAll();
 	}
+	
 
 	@RequestMapping(method = RequestMethod.POST, path = "reservations")
 	public ResponseEntity<String> creerReservation(@RequestBody ReservationRequete reservation) {
 		Reservation resa = new Reservation();
-		ResponseEntity<String> reponse = null;
+		ResponseEntity<String> reponse;
 		if (clientRepository.findById(reservation.getClientId()).isPresent()) {
 			Client client = new Client();
 			client = (clientRepository.findById(reservation.getClientId()).get());
@@ -81,7 +82,7 @@ public class ReservationController {
 				throw new EntityNotFoundException("la chambre " + c + "n’existe pas");
 			}
 		}
-		reservationRepository.save(resa);
+		this.reservationRepository.save(resa);
 		return reponse;
 
 	}

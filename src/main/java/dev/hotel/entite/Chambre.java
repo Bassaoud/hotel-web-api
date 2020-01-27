@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Entity
 @Table(name="chambre")
 public class Chambre extends BaseEntite {
+	//private static final long serialVersionUID = 1L;
 	
     private String numero;
 	
