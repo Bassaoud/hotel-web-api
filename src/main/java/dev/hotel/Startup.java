@@ -85,7 +85,7 @@ public class Startup {
 		}
 
 		if (this.reservationRepository.count() == 0) {
-			Client c1 = this.clientRepository.findByPrenoms("jean")
+			Client c1 = this.clientRepository.findByPrenoms("Jean")
 					.orElseThrow(() -> new EntityNotFoundException("client non trouvé"));
 			List<Chambre> chambres = this.chambreRepository.findAll();
 			List<Reservation> reservations = new ArrayList<>();
